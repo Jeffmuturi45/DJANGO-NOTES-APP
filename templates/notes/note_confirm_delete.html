@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Note{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 mx-auto">
+
+        <div class="card shadow-sm border-danger">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">
+                    <i class="fa fa-trash"></i> Delete Note
+                </h5>
+            </div>
+            <div class="card-body text-center">
+
+                <p class="mb-4">
+                    Are you sure you want to delete the note: 
+                    <strong>{{ note.title }}</strong>?
+                </p>
+
+                <form method="POST" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-icon">
+                        <i class="fa fa-trash-alt"></i> Confirm Delete
+                    </button>
+                </form>
+
+                <a href="{% url 'notes:list' %}" class="btn btn-secondary btn-icon">
+                    <i class="fa fa-arrow-left"></i> Cancel
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
